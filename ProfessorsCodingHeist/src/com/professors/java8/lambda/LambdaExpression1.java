@@ -7,18 +7,23 @@ public class LambdaExpression1 {
 		// Addition using Lambda Expression
 		ArithematicOperations addition = (num1, num2) -> (num1+num2);
 		
-		System.out.println("Addition of 2 numbers will be " + addition.operation(10, 20));
+		System.out.println("Addition = " + addition.operation(10, 20));
 		
 		//Substraction using Lambda Expression
 		ArithematicOperations substraction =  (num1, num2) -> (num1-num2);
 		
-		System.out.println("Substraction of 2 number will be "+ substraction.operation(20, 10));
+		System.out.println("Substraction =  "+ substraction.operation(20, 10));
 		
-		// Multiapplication using Lambda Expression
+		// Multiplication using Lambda Expression
 		
 		ArithematicOperations multiplication = (num1, num2) -> num1 * num2;
-		System.out.println("Multiplication of 2 numbers will be "+ multiplication.operation(20, 50));
+		System.out.println("Multiplication =  "+ multiplication.operation(20, 50));
 		
+		
+		//Divison using Lambda Expression 
+		
+		ArithematicOperations divide = (num1, num2) -> num1 / num2;
+		System.out.println("Divison = "+divide.operation(10, 5));
 	}
 	
 
