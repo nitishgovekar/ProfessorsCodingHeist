@@ -26,5 +26,4 @@ public class LambdaExpression1 {
 		System.out.println("Divison = "+divide.operation(10, 5));
 	}
 	
-
 }
