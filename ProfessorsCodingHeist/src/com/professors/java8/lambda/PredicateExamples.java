@@ -18,8 +18,6 @@ public class PredicateExamples {
 			System.out.println("The organization length is small!!!");
 		}
 		
-		
-
 	}
 
 }
