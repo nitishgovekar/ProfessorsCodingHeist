@@ -7,11 +7,15 @@ public class FP02FunctionalProgrammingWithFilter {
 
 	public static void main(String[] args) {
 		List<String> courses = List.of("Spring Boot", "SpringMVC", "API", "Microservices", "Docker");
-
 		printAllCourses(courses);
 		printCoursesWithWordSpring(courses);
 		printCoursesWithAtleast4Letters(courses);
+		printCoursesInUpperCase(courses);
+	}
 
+	private static void printCoursesInUpperCase(List<String> courses) {
+			courses.stream().map(eachCourse -> eachCourse.toUpperCase()).forEach(System.out::println);
+		
 	}
 
 	private static void printCoursesWithAtleast4Letters(List<String> courses) {
@@ -24,7 +28,6 @@ public class FP02FunctionalProgrammingWithFilter {
 
 	private static void printCoursesWithWordSpring(List<String> courses) {
 		System.out.println("Courses who have word Spring in them:");
-
 		courses.stream()
 		.filter(course -> course.contains("Spring"))
 		.forEach(System.out::println);
@@ -33,7 +36,6 @@ public class FP02FunctionalProgrammingWithFilter {
 
 	private static void printAllCourses(List<String> courses) {
 		System.out.println("Priting all courses: ");
-
 		courses.stream()
 		.forEach(System.out::println);
 	}
