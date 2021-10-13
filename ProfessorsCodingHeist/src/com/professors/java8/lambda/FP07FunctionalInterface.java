@@ -1,6 +1,7 @@
 package com.professors.java8.lambda;
 
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -37,5 +38,18 @@ public class FP07FunctionalInterface {
 			}
 		};
 		numbers.stream().filter(internalWorkingOfPredicate).map(internalWorkingOfFunction).forEach(internalWorkingOfConsumer);
+	
+		BinaryOperator<Integer> sumBinaryOperator = new BinaryOperator<Integer>() {
+
+			@Override
+			public Integer apply(Integer number1, Integer number2) {
+				return number1 + number2;
+			}
+		};
+		
+		int sum = numbers.stream().reduce(0, sumBinaryOperator);
+		
+		System.out.println("Sum of all the numbers present in the List is : "+ sum);
+		
 	}
 }
