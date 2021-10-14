@@ -4,14 +4,12 @@ import java.util.List;
 
 public class FP03FunctionalProgrammingWithMap {
 
-
 	public static void main(String[] args) {
 		List<String> courses = List.of("Spring Boot", "SpringMVC", "API", "Microservices", "Docker");
 		List<Integer> numbers = List.of(10,20,7,9,8,5,100);
 		printNumberOfCharactersInCourses(courses);
 		printCubesOfOddNumbers(numbers);
 		multiplyEachNumberBy2(numbers);
-
 	}
 
 	private static void multiplyEachNumberBy2(List<Integer> numbers) {
@@ -20,7 +18,6 @@ public class FP03FunctionalProgrammingWithMap {
 	}
 
 	private static void printNumberOfCharactersInCourses(List<String> courses) {
-
 		courses.stream()
 		.map(course -> course + " " + course.length())
 		.forEach(System.out::println);
@@ -32,6 +29,4 @@ public class FP03FunctionalProgrammingWithMap {
 		.map(number -> number*number*number)
 		.forEach(System.out::println);
 	}
-
-
 }

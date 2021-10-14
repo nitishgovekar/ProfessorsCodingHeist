@@ -7,7 +7,6 @@ public class FP01Structured {
 	public static void main(String[] args) {
 		//Java9 feature List.of to create new List of integers
 		printAllNumbersInListStructured(List.of(10,20,30,40,50));
-
 	}
 
 	private static void printAllNumbersInListStructured(List<Integer> numbers) {
@@ -15,6 +14,5 @@ public class FP01Structured {
 		for(int number : numbers) {
 			System.out.println(number);
 		}
-
 	}
 }	

@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 
 public class FP08BehaviorParameterization {
 	public static void main(String[] args) {
-
 		List<Integer> numbers = List.of(10,20,7,9,8,5,100,10,100,20,8,9,5);
 
 		filterAndPrintData(numbers, num -> num%2==0, "Print Even Numbers");
@@ -15,8 +14,6 @@ public class FP08BehaviorParameterization {
 		
 		mapDataAndPrint(numbers, num -> num*num, "Print Square of each numbers");
 		mapDataAndPrint(numbers, num -> num*num*num, "Print Cube of each numbers");
-
-
 	}
 
 	private static void mapDataAndPrint(List<Integer> numbers, Function<Integer, Integer> function, String message) {

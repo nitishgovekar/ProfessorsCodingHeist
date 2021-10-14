@@ -4,7 +4,6 @@ import java.util.List;
 
 public class FP02FunctionalProgrammingWithFilter {
 
-
 	public static void main(String[] args) {
 		List<String> courses = List.of("Spring Boot", "SpringMVC", "API", "Microservices", "Docker");
 		printAllCourses(courses);
@@ -15,7 +14,6 @@ public class FP02FunctionalProgrammingWithFilter {
 
 	private static void printCoursesInUpperCase(List<String> courses) {
 			courses.stream().map(eachCourse -> eachCourse.toUpperCase()).forEach(System.out::println);
-		
 	}
 
 	private static void printCoursesWithAtleast4Letters(List<String> courses) {
@@ -23,7 +21,6 @@ public class FP02FunctionalProgrammingWithFilter {
 		courses.stream()
 		.filter(course ->course.length() > 3)
 		.forEach(System.out::println);
-
 	}
 
 	private static void printCoursesWithWordSpring(List<String> courses) {
@@ -31,7 +28,6 @@ public class FP02FunctionalProgrammingWithFilter {
 		courses.stream()
 		.filter(course -> course.contains("Spring"))
 		.forEach(System.out::println);
-
 	}
 
 	private static void printAllCourses(List<String> courses) {

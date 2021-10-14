@@ -8,9 +8,7 @@ import java.util.function.Predicate;
 
 public class FP07FunctionalInterface {
 	public static void main(String[] args) {
-
 		List<Integer> numbers = List.of(10,20,7,9,8,5,100,10,100,20,8,9,5);
-
 		// Internal Working of Predicate Functionalinterface
 		Predicate<Integer> internalWorkingOfPredicate = new Predicate<Integer>() {
 
@@ -19,7 +17,6 @@ public class FP07FunctionalInterface {
 				return number%2 == 0;
 			}
 		};
-
 		// Internal Working Of Function FunctionalInterface
 		Function<Integer, Integer> internalWorkingOfFunction = new Function<Integer, Integer>() {
 
@@ -28,7 +25,6 @@ public class FP07FunctionalInterface {
 				return number*2;
 			}
 		};
-
 		// Internal Working of Consumer Interface
 		Consumer<Integer> internalWorkingOfConsumer = new Consumer<Integer>() {
 
@@ -46,10 +42,7 @@ public class FP07FunctionalInterface {
 				return number1 + number2;
 			}
 		};
-		
 		int sum = numbers.stream().reduce(0, sumBinaryOperator);
-		
 		System.out.println("Sum of all the numbers present in the List is : "+ sum);
-		
 	}
 }

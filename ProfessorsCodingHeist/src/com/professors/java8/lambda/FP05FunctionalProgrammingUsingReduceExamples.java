@@ -4,10 +4,8 @@ import java.util.List;
 
 public class FP05FunctionalProgrammingUsingReduceExamples {
 	public static void main(String[] args) {
-
 		List<Integer> numbers = List.of(10,20,7,9,8,5,100);
 		performReduceOperations(numbers);
-
 	}
 	private static void performReduceOperations(List<Integer> numbers) {
 
