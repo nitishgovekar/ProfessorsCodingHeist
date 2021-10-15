@@ -117,6 +117,12 @@ public class FP11CustomClass {
 		.takeWhile(course->course.getReviewScore()>=95)
 		.collect(Collectors.toList()));
 		// [Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150]]
+		
+		System.out.println(courses.stream().max(comparingByNumberOfStudentsAndReviewScore));
+		//Optional[Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50]]
+
+		System.out.println(courses.stream().min(comparingByNumberOfStudentsAndReviewScore));
+		//Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200]]
 
 	}
 }
