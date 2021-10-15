@@ -123,6 +123,16 @@ public class FP11CustomClass {
 
 		System.out.println(courses.stream().min(comparingByNumberOfStudentsAndReviewScore));
 		//Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200]]
-
+		
+		//Returns average of number of subscribers that are present for the courses whose review score is greater than 95
+		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).average());
+		//Returns total  of number of courses that are present for the courses whose review score is greater than 95
+		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).count());
+		//Returns sum of total  number of subscribers that are present for the courses whose review score is greater than 95
+		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).sum());
+		//Returns max number of subscribers that are present for the courses whose review score is greater than 95
+		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).max());
+		//Returns min number of subscribers that are present for the courses whose review score is greater than 95
+		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).min());
 	}
 }
