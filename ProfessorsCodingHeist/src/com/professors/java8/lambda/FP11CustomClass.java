@@ -64,7 +64,7 @@ public class FP11CustomClass {
 				new Course("Microservices", "Microservices", 99, 50),
 				new Course("Azure", "Cloud", 97, 200)
 				);
-	
+
 		//allMatch , noneMatch, anyMatch
 		Predicate<Course> reviewScoreGreaterThan95 = course -> course.getReviewScore() > 95;
 		Predicate<Course> reviewScoreGreaterThan90 = course -> course.getReviewScore() > 90;
@@ -81,15 +81,42 @@ public class FP11CustomClass {
 
 		System.out.println("\ncomparingByNumberOfStudentsInIncreasingOrder"+
 				courses.stream()
-				.sorted(comparingByNumberOfStudentsInIncreasingOrder)
-				.collect(Collectors.toList()));
+		.sorted(comparingByNumberOfStudentsInIncreasingOrder)
+		.collect(Collectors.toList()));
+		// comparingByNumberOfStudentsInIncreasingOrder[Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50], Course [name=Microservices, category=Microservices, reviewScore=99, noOfSubscribers=50], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150], Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=FullStack, category=FullStack, reviewScore=91, noOfSubscribers=200], Course [name=Azure, category=Cloud, reviewScore=97, noOfSubscribers=200]]
+
 		System.out.println("comparingByNumberOfStudentsInDecreasingOrder"+
 				courses.stream()
-				.sorted(comparingByNumberOfStudentsInDecreasingOrder)
-				.collect(Collectors.toList()));
+		.sorted(comparingByNumberOfStudentsInDecreasingOrder)
+		.collect(Collectors.toList()));
+		// comparingByNumberOfStudentsInDecreasingOrder[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=FullStack, category=FullStack, reviewScore=91, noOfSubscribers=200], Course [name=Azure, category=Cloud, reviewScore=97, noOfSubscribers=200], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150], Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50], Course [name=Microservices, category=Microservices, reviewScore=99, noOfSubscribers=50]]
+
 		System.out.println("comparingByNumberOfStudentsAndReviewScore"+
 				courses.stream()
-				.sorted(comparingByNumberOfStudentsAndReviewScore)
-				.collect(Collectors.toList()));
+		.sorted(comparingByNumberOfStudentsAndReviewScore)
+		.collect(Collectors.toList()));
+		// comparingByNumberOfStudentsAndReviewScore[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=Azure, category=Cloud, reviewScore=97, noOfSubscribers=200], Course [name=FullStack, category=FullStack, reviewScore=91, noOfSubscribers=200], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Microservices, category=Microservices, reviewScore=99, noOfSubscribers=50], Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50]]
+
+		System.out.println( "Limiting the output to 5 results only: "+
+				courses.stream()
+		.sorted(comparingByNumberOfStudentsInIncreasingOrder)
+		.limit(5)
+		.collect(Collectors.toList()));
+		//Limiting the output to 5 results only: [Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50], Course [name=Microservices, category=Microservices, reviewScore=99, noOfSubscribers=50], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150], Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200]]
+
+		System.out.println("Skipping top 3 results: "+ 
+				courses.stream()
+		.sorted(comparingByNumberOfStudentsInIncreasingOrder)
+		.skip(3)
+		.limit(5)
+		.collect(Collectors.toList()));
+		//Skipping top 3 results: [Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150], Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=FullStack, category=FullStack, reviewScore=91, noOfSubscribers=200], Course [name=Azure, category=Cloud, reviewScore=97, noOfSubscribers=200]]
+
+		System.out.println(
+				courses.stream()
+		.takeWhile(course->course.getReviewScore()>=95)
+		.collect(Collectors.toList()));
+		// [Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150]]
+
 	}
 }
