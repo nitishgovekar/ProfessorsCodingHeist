@@ -134,5 +134,12 @@ public class FP11CustomClass {
 		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).max());
 		//Returns min number of subscribers that are present for the courses whose review score is greater than 95
 		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).min());
+	
+	
+	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory)));
+	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.counting())));
+	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
+	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.mapping(Course::getName, Collectors.toList()))));
+
 	}
 }
