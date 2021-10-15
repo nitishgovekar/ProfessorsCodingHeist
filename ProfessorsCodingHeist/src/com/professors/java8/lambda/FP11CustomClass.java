@@ -1,7 +1,9 @@
 package com.professors.java8.lambda;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 class Course{
 
@@ -55,7 +57,7 @@ public class FP11CustomClass {
 	public static void main(String[] args) {
 		List<Course> courses = List.of(
 				new Course("Spring", "Framework", 98,200), 
-				new Course("SpringBoot", "Framework", 96, 50),
+				new Course("SpringBoot", "Framework", 98, 50),
 				new Course("API", "Microservices", 95, 150),
 				new Course("Docker", "Cloud", 97, 150),
 				new Course("FullStack", "FullStack", 91, 200),
@@ -68,9 +70,26 @@ public class FP11CustomClass {
 		Predicate<Course> reviewScoreGreaterThan90 = course -> course.getReviewScore() > 90;
 		Predicate<Course> reviewScoreLessThan90 = course -> course.getReviewScore() < 90;
 
-		System.out.println(courses.stream().allMatch(reviewScoreGreaterThan95));
-		System.out.println(courses.stream().noneMatch(reviewScoreLessThan90));
-		System.out.println(courses.stream().anyMatch(reviewScoreGreaterThan90));
+		System.out.println("Is reviewScoreGreaterThan95: "+ courses.stream().allMatch(reviewScoreGreaterThan95));
+		System.out.println("Is reviewScoreLessThan90: "+ courses.stream().noneMatch(reviewScoreLessThan90));
+		System.out.println("Is reviewScoreGreaterThan90: "+ courses.stream().anyMatch(reviewScoreGreaterThan90));
 
+		//Using Comparator to sort the courses
+		Comparator<Course> comparingByNumberOfStudentsInIncreasingOrder = Comparator.comparingInt(Course::getNoOfSubscribers);
+		Comparator<Course> comparingByNumberOfStudentsInDecreasingOrder = Comparator.comparingInt(Course::getNoOfSubscribers).reversed();
+		Comparator<Course> comparingByNumberOfStudentsAndReviewScore = Comparator.comparingInt(Course::getNoOfSubscribers).thenComparingInt(Course::getReviewScore).reversed();
+
+		System.out.println("\ncomparingByNumberOfStudentsInIncreasingOrder"+
+				courses.stream()
+				.sorted(comparingByNumberOfStudentsInIncreasingOrder)
+				.collect(Collectors.toList()));
+		System.out.println("comparingByNumberOfStudentsInDecreasingOrder"+
+				courses.stream()
+				.sorted(comparingByNumberOfStudentsInDecreasingOrder)
+				.collect(Collectors.toList()));
+		System.out.println("comparingByNumberOfStudentsAndReviewScore"+
+				courses.stream()
+				.sorted(comparingByNumberOfStudentsAndReviewScore)
+				.collect(Collectors.toList()));
 	}
 }
