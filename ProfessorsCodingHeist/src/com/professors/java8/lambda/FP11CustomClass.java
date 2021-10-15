@@ -114,16 +114,16 @@ public class FP11CustomClass {
 
 		System.out.println(
 				courses.stream()
-		.takeWhile(course->course.getReviewScore()>=95)
-		.collect(Collectors.toList()));
+				.takeWhile(course->course.getReviewScore()>=95)
+				.collect(Collectors.toList()));
 		// [Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50], Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150]]
-		
+
 		System.out.println(courses.stream().max(comparingByNumberOfStudentsAndReviewScore));
 		//Optional[Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50]]
 
 		System.out.println(courses.stream().min(comparingByNumberOfStudentsAndReviewScore));
 		//Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200]]
-		
+
 		//Returns average of number of subscribers that are present for the courses whose review score is greater than 95
 		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).average());
 		//Returns total  of number of courses that are present for the courses whose review score is greater than 95
@@ -134,12 +134,17 @@ public class FP11CustomClass {
 		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).max());
 		//Returns min number of subscribers that are present for the courses whose review score is greater than 95
 		System.out.println(courses.stream().filter(reviewScoreGreaterThan95).mapToInt(course -> course.getNoOfSubscribers()).min());
-	
-	
-	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory)));
-	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.counting())));
-	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
-	System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.mapping(Course::getName, Collectors.toList()))));
 
+		System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory)));
+		System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.counting())));
+		System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.maxBy(Comparator.comparing(Course::getReviewScore)))));
+		System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.mapping(Course::getName, Collectors.toList()))));
+/** Outputs when we are using grouping by
+		{Cloud=[Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150], Course [name=Azure, category=Cloud, reviewScore=97, noOfSubscribers=200]], FullStack=[Course [name=FullStack, category=FullStack, reviewScore=91, noOfSubscribers=200]], Microservices=[Course [name=API, category=Microservices, reviewScore=95, noOfSubscribers=150], Course [name=Microservices, category=Microservices, reviewScore=99, noOfSubscribers=50]], Framework=[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200], Course [name=SpringBoot, category=Framework, reviewScore=98, noOfSubscribers=50]]}
+		{Cloud=2, FullStack=1, Microservices=2, Framework=2}
+		{Cloud=Optional[Course [name=Docker, category=Cloud, reviewScore=97, noOfSubscribers=150]], FullStack=Optional[Course [name=FullStack, category=FullStack, reviewScore=91, noOfSubscribers=200]], Microservices=Optional[Course [name=Microservices, category=Microservices, reviewScore=99, noOfSubscribers=50]], Framework=Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfSubscribers=200]]}
+		{Cloud=[Docker, Azure], FullStack=[FullStack], Microservices=[API, Microservices], Framework=[Spring, SpringBoot]}
+**/
+		
 	}
 }
